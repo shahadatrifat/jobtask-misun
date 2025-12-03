@@ -5,6 +5,9 @@ import { createBrowserRouter } from "react-router";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import CourseDetails from "../pages/CourseDetails";
+import ProtectedRoute from "../components/ProtectedRoutes";
+import Dashboard from "../pages/student/Dashboard";
+import CoursePlayer from "../pages/student/CoursePlayer";
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +23,20 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>
       },
       {
-        path:"/login",
+        path: "/login",
         element: <Login></Login>
       },
       {
-        path:"/register",
+        path: "/register",
         element: <Register></Register>
+      },
+      {
+        path:"/dashboard",
+        element: <ProtectedRoute><Dashboard></Dashboard></ProtectedRoute>
+      },
+      {
+        path:"/course-player/:id",
+        element: <ProtectedRoute><CoursePlayer></CoursePlayer></ProtectedRoute>
       }
     ]
   },
