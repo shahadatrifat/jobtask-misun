@@ -8,6 +8,8 @@ import CourseDetails from "../pages/CourseDetails";
 import ProtectedRoute from "../components/ProtectedRoutes";
 import Dashboard from "../pages/student/Dashboard";
 import CoursePlayer from "../pages/student/CoursePlayer";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import ManageCourse from "../pages/admin/ManageCourses";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,19 @@ export const router = createBrowserRouter([
       {
         path:"/course-player/:id",
         element: <ProtectedRoute><CoursePlayer></CoursePlayer></ProtectedRoute>
+      },
+      // admin routes
+      {
+        path:"/admin",
+        element: <ProtectedRoute adminOnly><AdminDashboard></AdminDashboard></ProtectedRoute>
+      },
+      {
+        path:"/admin/create-course",
+        element:<ProtectedRoute adminOnly><ManageCourse></ManageCourse></ProtectedRoute>
+      },
+      {
+        path: "admin/edit-course/:id",
+        element: <ProtectedRoute adminOnly><ManageCourse></ManageCourse></ProtectedRoute>
       }
     ]
   },
